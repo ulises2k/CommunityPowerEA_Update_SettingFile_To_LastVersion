@@ -708,10 +708,8 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.31"
 
-
 		#Read All Setting File parameters
 		$inifile = Get-IniFile($filePath)
-
 
 		#https://communitypowerea.userecho.com/en/communities/7/topics/336-migrate-settings-file-230-to-231-version
 		#
@@ -1467,9 +1465,11 @@ function MainUpdateVersion ([string]$filePath) {
 		Optimization_Settings      = "===== Optimization ====="
 	}
 
+	#Read All Setting File parameters
+	$inifile = Get-IniFile($filePath)
 
 	#Expert_Comment
-	$Expert_Comment = [int]$inifile["Expert_Comment"]
+	$Expert_Comment = [string]$inifile["Expert_Comment"]
 	$lastUpdate = "2.48"
 	Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 		Expert_Comment = $Expert_Comment + "Updated:" + $lastVersion + "=>" + $lastUpdate
