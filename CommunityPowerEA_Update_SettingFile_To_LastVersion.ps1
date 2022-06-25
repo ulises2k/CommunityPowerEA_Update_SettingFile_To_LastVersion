@@ -62,10 +62,7 @@ function MainUpdateVersion ([string]$filePath) {
 
 
 	#Detect Version 2.18
-	#Pending_Type=0
-	#Pending_Distance=10
-	#Pending_Bar=2
-	#Pending_TrailMode=2
+	#Pending_Type=1
 	#MinPause_Bars=0
 	#BreakEven_AfterOrder=0
 	if (Select-String -Path $filePath -Quiet -Pattern "Pending_Type") {
@@ -75,10 +72,7 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.18"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			Pending_Type         = "0"
-			Pending_Distance     = "10"
-			Pending_Bar          = "2"
-			Pending_TrailMode    = "2"
+			Pending_Type         = "1"
 			MinPause_Bars        = "0"
 			BreakEven_AfterOrder = "0"
 		}
@@ -89,10 +83,10 @@ function MainUpdateVersion ([string]$filePath) {
 	#GlobalMartingail_Properties========
 	#ApplyAfterClosedLoss=false
 	#BigCandle_OpenOn=0
-	#Oscillators_OpenOn=0
+	#Oscillators_OpenOn=2
 	#Oscillator2_OpenOn=0
-	#IdentifyTrend_OpenOn=0
-	#TDI_OpenOn=0
+	#IdentifyTrend_OpenOn=2
+	#TDI_OpenOn=2
 	#MACD_OpenOn=0
 	#MA_Filter_1_OpenOn=0
 	#MA_Filter_2_OpenOn=0
@@ -111,10 +105,10 @@ function MainUpdateVersion ([string]$filePath) {
 			GlobalMartingail_Properties = "===== Apply martin to the new deals ====="
 			ApplyAfterClosedLoss        = "false"
 			BigCandle_OpenOn            = "0"
-			Oscillators_OpenOn          = "0"
+			Oscillators_OpenOn          = "2"
 			Oscillator2_OpenOn          = "0"
-			IdentifyTrend_OpenOn        = "0"
-			TDI_OpenOn                  = "0"
+			IdentifyTrend_OpenOn        = "2"
+			TDI_OpenOn                  = "2"
 			MACD_OpenOn                 = "0"
 			MA_Filter_1_OpenOn          = "0"
 			MA_Filter_2_OpenOn          = "0"
@@ -156,7 +150,7 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.20"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			StopLoss_Mode               = "0"
+			StopLoss_Mode = "1"
 		}
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MinProfitToClose_Properties = "===== Min profit to close on signal ====="
@@ -165,25 +159,27 @@ function MainUpdateVersion ([string]$filePath) {
 			MartingailLotMode           = "2"
 		}
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			PartialClose_Properties     = "===== Partial Close ====="
-			PartialClose_After          = "0"
-			PartialClose_MinProfit      = "0"
-			AntiMartingailLotMode       = "2"
-			AntiStopLoss_ReduceSize     = "0"
-			AntiStopLoss_ReduceCoeff    = "1"
-			AntiStopLoss_MinSize        = "5"
-			AntiStopLoss_Mode           = "1"
-			BigCandle_MartinOn          = "0"
-			Oscillators_MartinOn        = "0"
-			Oscillator2_MartinOn        = "0"
-			IdentifyTrend_MartinOn      = "0"
-			TDI_MartinOn                = "0"
-			MACD_MartinOn               = "0"
-			MA_Filter_1_MartinOn        = "0"
-			MA_Filter_2_MartinOn        = "0"
-			MA_Filter_3_MartinOn        = "0"
-			VolFilter_MartinOn          = "0"
-			FIBO_MartinOn               = "0"
+			PartialClose_Properties  = "===== Partial Close ====="
+			PartialClose_After       = "0"
+			PartialClose_MinProfit   = "0"
+			AntiMartingailLotMode    = "2"
+			AntiStopLoss_ReduceSize  = "0"
+			AntiStopLoss_ReduceCoeff = "1"
+			AntiStopLoss_MinSize     = "5"
+			AntiStopLoss_Mode        = "1"
+		}
+		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
+			BigCandle_MartinOn       = "0"
+			Oscillators_MartinOn     = "0"
+			Oscillator2_MartinOn     = "0"
+			IdentifyTrend_MartinOn   = "0"
+			TDI_MartinOn             = "0"
+			MACD_MartinOn            = "0"
+			MA_Filter_1_MartinOn     = "0"
+			MA_Filter_2_MartinOn     = "0"
+			MA_Filter_3_MartinOn     = "0"
+			VolFilter_MartinOn       = "0"
+			FIBO_MartinOn            = "0"
 		}
 	}
 	#Detect Version 2.21
@@ -196,7 +192,7 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.21"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			NewDealOnNewBar = "false"
+			NewDealOnNewBar = "true"
 		}
 	}
 	#Detect Version 2.22
@@ -223,9 +219,9 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.23"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			MaxFloatingLoss              = "0"
-			GlobalStopLoss_ccy           = "0"
-			PauseAfterLoss               = "0"
+			MaxFloatingLoss    = "0"
+			GlobalStopLoss_ccy = "0"
+			PauseAfterLoss     = "0"
 		}
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			TakeProfit_ReduceAfter       = "===== Reduce Take Profit after minutes ====="
@@ -461,7 +457,7 @@ function MainUpdateVersion ([string]$filePath) {
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			UseVirtualTP        = "false"
 			BreakEven_MinProfit = "0"
-			TDI_Mode            = "0"
+			TDI_Mode            = "1"
 			TDI_SignalLevel     = "50"
 			TDI_PeriodRSI       = "21"
 			TDI_AppliedPriceRSI = "1"
@@ -564,9 +560,7 @@ function MainUpdateVersion ([string]$filePath) {
 			News_Color_ImpactL   = "32768"
 			News_Color_ImpactN   = "12632256"
 		}
-
 	}
-
 
 	#Detect Version 2.30
 	#MinStepSize=0||0||0.000000||0.000000||N
@@ -678,12 +672,6 @@ function MainUpdateVersion ([string]$filePath) {
 			Profit_Aggregate = "true"
 		}
 	}
-
-
-
-
-
-
 
 	#Detect Version 2.31
 	#MinMarginLevel=0
@@ -898,9 +886,9 @@ function MainUpdateVersion ([string]$filePath) {
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Lot_MaxPer1000            = "0"
 			Hedge_Properties          = "===== Hedge ====="
-			AllowHedge                = "false"
+			AllowHedge                = "true"
 			IncreaseHedge_After       = "0"
-			IncreaseHedge_Coefficient = "2.5"
+			IncreaseHedge_Coefficient = "1"
 			IncreaseHedge_Mode        = "0"
 			AutoHedge_AfterOrder      = "0"
 		}
@@ -937,9 +925,11 @@ function MainUpdateVersion ([string]$filePath) {
 	#GlobalAccountTrailingStop_perc=0
 	#CutomCoefficients=2.2,3.4,4.7
 	#AntiCutomCoefficients=0.95,0.77,0.53
-	#PartialCloseHedge_MinProfit=10
-	#PartialCloseHedge_MinProfit_Perc=0.5
-	#PartialCloseHedge_MinProfit_OppL=95
+	#PartialCloseHedge_BothWays=false
+	#PartialCloseHedge_MaxPrOrders=0
+	#PartialCloseHedge_MinProfit=0
+	#PartialCloseHedge_MinProfit_Perc=0
+	#PartialCloseHedge_MinProfit_OppL=0
 	if (Select-String -Path $filePath -Quiet -Pattern "AutoHedge_MaxOrders") {
 		$version = $version + ">=2.34"
 		$lastVersion = "2.34"
@@ -947,14 +937,16 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.34"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			AutoHedge_MaxOrders              = "0"
+			AutoHedge_MaxOrders              = "1"
 			GlobalAccountTrailingStop_ccy    = "0"
 			GlobalAccountTrailingStop_perc   = "0"
 			CutomCoefficients                = "2.2,3.4,4.7"
 			AntiCutomCoefficients            = "0.95,0.77,0.53"
-			PartialCloseHedge_MinProfit      = "10"
-			PartialCloseHedge_MinProfit_Perc = "0.5"
-			PartialCloseHedge_MinProfit_OppL = "95"
+			PartialCloseHedge_BothWays       = "false"
+			PartialCloseHedge_MaxPrOrders    = "0"
+			PartialCloseHedge_MinProfit      = "0"
+			PartialCloseHedge_MinProfit_Perc = "0"
+			PartialCloseHedge_MinProfit_OppL = "0"
 		}
 	}
 
@@ -1046,8 +1038,8 @@ function MainUpdateVersion ([string]$filePath) {
 			DTrend_Properties     = "===== DTrend ====="
 			DTrend_Type           = "0"
 			DTrend_TF             = "0"
-			DTrend_PeriodMA1      = "9"
-			DTrend_PeriodMA2      = "12"
+			DTrend_PeriodMA1      = "5"
+			DTrend_PeriodMA2      = "9"
 			DTrend_PeriodD        = "5"
 			DTrend_Scalar         = "1000000"
 			DTrend_Level          = "30"
@@ -1336,7 +1328,7 @@ function MainUpdateVersion ([string]$filePath) {
 	else {
 		$update = $update + "/2.47"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			SendAlertsToGrammy  = "false"
+			SendAlertsToGrammy  = "true"
 			UseOnlyOpenedTrades = "true"
 		}
 	}
@@ -1406,7 +1398,7 @@ function MainUpdateVersion ([string]$filePath) {
 		}
 	}
 
-	#Set Properties v2.48
+	#Set Properties v2.48.2
 	Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 		BinanceTradeConnector_Settings = "===== BinanceTradeConnector settings ====="
 		Expert_Properties              = "===== Expert ====="
@@ -1476,9 +1468,6 @@ function MainUpdateVersion ([string]$filePath) {
 	}
 
 
-	#Read All Setting File parameters
-	$inifile = Get-IniFile($filePath)
-
 	#Expert_Comment
 	$Expert_Comment = [int]$inifile["Expert_Comment"]
 	$lastUpdate = "2.48"
@@ -1527,7 +1516,7 @@ $label2.Text = "Versions:"
 $label3 = New-Object Windows.Forms.Label
 $label3.Location = '5,85'
 $label3.AutoSize = $True
-$label3.Text = "Last Version:"
+$label3.Text = "Last Version Detected:"
 
 # Label
 $label4 = New-Object Windows.Forms.Label
@@ -1581,10 +1570,10 @@ $button_Click = {
 			if ($version.length -gt 2) {
 				if ($update.length -gt 2) {
 					$label2.Text = 'Versions: ' + $version
-					$label3.Text = 'Last Version: ' + $lastVersion
-					$label4.Text = 'Update: ' + $update
+					$label3.Text = 'Last Version Detected: ' + $lastVersion
+					$label4.Text = 'Updated: ' + $update
 					$label5.Text = 'New File Name: ' + $PathDest
-					[System.Windows.Forms.MessageBox]::Show('Last Version: ' + $lastVersion + "`nUpdate:" + $update, 'Setting Updated', 0, 64)
+					[System.Windows.Forms.MessageBox]::Show('Last Version Detected: ' + $lastVersion + "`nUpdated:" + $update, 'Setting Updated', 0, 64)
 				}
 				else {
 					$label3.Text = 'Not updated'
