@@ -1,4 +1,4 @@
-# Script that updates the configuration file from version 2.31 to 2.48
+# Script that updates the configuration file from version 2.18 to 2.48
 # Drag and drop file settings MT5 to windows form and press button
 #
 # Autor: Ulises Cune (@Ulises2k)
@@ -73,7 +73,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.18"
 	}
 	else {
-		$update = $update + "_2.31"
+		$update = $update + "/2.18"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Pending_Type         = "0"
 			Pending_Distance     = "10"
@@ -105,7 +105,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.19"
 	}
 	else {
-		$update = $update + "_2.19"
+		$update = $update + "/2.19"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MartingailOnSignal          = "false"
 			GlobalMartingail_Properties = "===== Apply martin to the new deals ====="
@@ -154,13 +154,17 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.20"
 	}
 	else {
-		$update = $update + "_2.20"
+		$update = $update + "/2.20"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			StopLoss_Mode               = "0"
+		}
+		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MinProfitToClose_Properties = "===== Min profit to close on signal ====="
 			MinProfitToClose            = "0"
 			MartingailOnTheBarEnd       = "false"
 			MartingailLotMode           = "2"
+		}
+		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			PartialClose_Properties     = "===== Partial Close ====="
 			PartialClose_After          = "0"
 			PartialClose_MinProfit      = "0"
@@ -190,7 +194,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.21"
 	}
 	else {
-		$update = $update + "_2.21"
+		$update = $update + "/2.21"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			NewDealOnNewBar = "false"
 		}
@@ -217,11 +221,13 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.23"
 	}
 	else {
-		$update = $update + "_2.23"
+		$update = $update + "/2.23"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MaxFloatingLoss              = "0"
 			GlobalStopLoss_ccy           = "0"
 			PauseAfterLoss               = "0"
+		}
+		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			TakeProfit_ReduceAfter       = "===== Reduce Take Profit after minutes ====="
 			TakeProfit_ReduceAfter_mins  = "0"
 			TakeProfit_ReduceAfter_coeff = "0.1"
@@ -252,7 +258,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.24"
 	}
 	else {
-		$update = $update + "_2.24"
+		$update = $update + "/2.24"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			FIB2_Properties    = "===== FIBO #2 ====="
 			FIB2_Type          = "0"
@@ -313,7 +319,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.25"
 	}
 	else {
-		$update = $update + "_2.25"
+		$update = $update + "/2.25"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			BigCandle_CloseOn            = "0"
 			BigCandle_PartialCloseOn     = "0"
@@ -369,7 +375,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.26"
 	}
 	else {
-		$update = $update + "_2.26"
+		$update = $update + "/2.26"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			AutoHedge_AfterOrder = "0"
 		}
@@ -388,7 +394,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.27"
 	}
 	else {
-		$update = $update + "_2.27"
+		$update = $update + "/2.27"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			UseCustomCommission   = "0"
 			UseVirtualSL          = "true"
@@ -451,7 +457,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.28"
 	}
 	else {
-		$update = $update + "_2.28"
+		$update = $update + "/2.28"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			UseVirtualTP        = "false"
 			BreakEven_MinProfit = "0"
@@ -537,7 +543,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.29"
 	}
 	else {
-		$update = $update + "_2.29"
+		$update = $update + "/2.29"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			News_Properties      = "===== News ====="
 			News_Mode            = "0"
@@ -616,7 +622,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.30"
 	}
 	else {
-		$update = $update + "_2.30"
+		$update = $update + "/2.30"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MinStepSize     = 0
 			AntiMinStepSize = 0
@@ -712,7 +718,12 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.31"
 	}
 	else {
-		$update = $update + "_2.31"
+		$update = $update + "/2.31"
+
+
+		#Read All Setting File parameters
+		$inifile = Get-IniFile($filePath)
+
 
 		#https://communitypowerea.userecho.com/en/communities/7/topics/336-migrate-settings-file-230-to-231-version
 		#
@@ -883,7 +894,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.32.4"
 	}
 	else {
-		$update = $update + "_2.32.4"
+		$update = $update + "/2.32.4"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Lot_MaxPer1000            = "0"
 			Hedge_Properties          = "===== Hedge ====="
@@ -934,7 +945,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.34"
 	}
 	else {
-		$update = $update + "_2.34"
+		$update = $update + "/2.34"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			AutoHedge_MaxOrders              = "0"
 			GlobalAccountTrailingStop_ccy    = "0"
@@ -998,7 +1009,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.35"
 	}
 	else {
-		$update = $update + "_2.35"
+		$update = $update + "/2.35"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			GlobalTakeProfit_ccy      = "0"
 			GlobalTakeProfit_OnlyLock = "false"
@@ -1076,7 +1087,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.36"
 	}
 	else {
-		$update = $update + "_2.36"
+		$update = $update + "/2.36"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			AutoHedge_OnDrawDown         = "0"
 			CustomStepCoefficients       = ""
@@ -1114,7 +1125,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$version = $version + ">=2.37.2"
 	}
 	else {
-		$update = $update + "_2.37.2"
+		$update = $update + "/2.37.2"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Pending_DisableForOpposite = "false"
 			AntiMartingail_AllowTP     = "false"
@@ -1138,7 +1149,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.38"
 	}
 	else {
-		$update = $update + "_2.38"
+		$update = $update + "/2.38"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MaxStepSize     = "0"
 			AntiMaxStepSize = "0"
@@ -1153,7 +1164,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.39"
 	}
 	else {
-		$update = $update + "_2.39"
+		$update = $update + "/2.39"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			MaxFloatingLoss1 = "0"
 			MinMarginLevel1  = "0"
@@ -1171,7 +1182,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.40-2.41"
 	}
 	else {
-		$update = $update + "_(2.40,2.41)"
+		$update = $update + "/(2.40,2.41)"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			BinanceTradeConnector_Settings = "===== BinanceTradeConnector settings ====="
 			CustomStartBalance             = "0"
@@ -1189,7 +1200,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.42"
 	}
 	else {
-		$update = $update + "_2.42"
+		$update = $update + "/2.42"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Pending_DeleteIfOpposite = "false"
 		}
@@ -1211,7 +1222,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.43"
 	}
 	else {
-		$update = $update + "_2.43.3"
+		$update = $update + "/2.43.3"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			Pending_DeleteIfOpposite = "false"
 			PartialClose_AnyToAny    = "false"
@@ -1236,7 +1247,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.44"
 	}
 	else {
-		$update = $update + "_2.44"
+		$update = $update + "/2.44"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			BigCandle_MaxSize = "0"
 		}
@@ -1265,7 +1276,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.45"
 	}
 	else {
-		$update = $update + "_2.45"
+		$update = $update + "/2.45"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			GlobalAccountStopTillTomorrow = "false"
 			TrailingIncreaseEvery         = "0"
@@ -1302,7 +1313,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.46"
 	}
 	else {
-		$update = $update + "_2.46"
+		$update = $update + "/2.46"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			TrailingDecreaseEveryMinutes   = "0"
 			TrailingDecreaseCoeff          = "0.9"
@@ -1323,7 +1334,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.47"
 	}
 	else {
-		$update = $update + "_2.47"
+		$update = $update + "/2.47"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			SendAlertsToGrammy  = "false"
 			UseOnlyOpenedTrades = "true"
@@ -1359,7 +1370,7 @@ function MainUpdateVersion ([string]$filePath) {
 		$lastVersion = "2.48"
 	}
 	else {
-		$update = $update + "_2.48"
+		$update = $update + "/2.48"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			GlobalAccountStopLoss_ccy  = "0"
 			GlobalAccountStopLoss_perc = "0"
@@ -1472,10 +1483,10 @@ function MainUpdateVersion ([string]$filePath) {
 	$Expert_Comment = [int]$inifile["Expert_Comment"]
 	$lastUpdate = "2.48"
 	Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-		Expert_Comment = $Expert_Comment + "Update" + $lastVersion + ">" + $lastUpdate
+		Expert_Comment = $Expert_Comment + "Updated:" + $lastVersion + "=>" + $lastUpdate
 	}
 
-	return [string]$version, [string]$update
+	return [string]$version, [string]$lastVersion, [string]$update, [string]$PathDest
 }
 
 #######################GUI################################################################
@@ -1485,7 +1496,7 @@ function MainUpdateVersion ([string]$filePath) {
 
 ### Create form ###
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Update Setting File v2.48 CommunityPower EA MT5"
+$form.Text = "Update Setting File to v2.48 - CommunityPower EA MT5"
 $form.Size = '800,320'
 $form.StartPosition = "CenterScreen"
 $form.MinimumSize = $form.Size
@@ -1510,30 +1521,36 @@ $button2.Text = "Clear ListBox"
 $label2 = New-Object Windows.Forms.Label
 $label2.Location = '5,70'
 $label2.AutoSize = $True
-$label2.Text = "Version:"
+$label2.Text = "Versions:"
 
 # Label
 $label3 = New-Object Windows.Forms.Label
 $label3.Location = '5,85'
 $label3.AutoSize = $True
-$label3.Text = "Update:"
+$label3.Text = "Last Version:"
 
 # Label
 $label4 = New-Object Windows.Forms.Label
 $label4.Location = '5,100'
 $label4.AutoSize = $True
-$label4.Text = "New File Name:"
+$label4.Text = "Update:"
+
+# Label
+$label5 = New-Object Windows.Forms.Label
+$label5.Location = '5,115'
+$label5.AutoSize = $True
+$label5.Text = "New File Name:"
 
 # Label
 $label = New-Object Windows.Forms.Label
-$label.Location = '5,115'
+$label.Location = '5,160'
 $label.AutoSize = $True
 $label.Text = "Drag and Drop MT5 files settings here:"
 
 # Listbox
 $listBox = New-Object Windows.Forms.ListBox
-$listBox.Location = '5,140'
-$listBox.Height = 120
+$listBox.Location = '5,180'
+$listBox.Height = 80
 $listBox.Width = 760
 $listBox.Anchor = ([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right -bor [System.Windows.Forms.AnchorStyles]::Top)
 $listBox.IntegralHeight = $False
@@ -1551,6 +1568,7 @@ $form.Controls.Add($label)
 $form.Controls.Add($label2)
 $form.Controls.Add($label3)
 $form.Controls.Add($label4)
+$form.Controls.Add($label5)
 $form.Controls.Add($listBox)
 $form.Controls.Add($statusBar)
 $form.ResumeLayout()
@@ -1559,12 +1577,14 @@ $form.ResumeLayout()
 $button_Click = {
 	foreach ($item in $listBox.Items) {
 		if (!($i -is [System.IO.DirectoryInfo])) {
-			$version, $update = MainUpdateVersion -file $item
+			$version, $lastVersion, $update, $PathDest = MainUpdateVersion -file $item
 			if ($version.length -gt 2) {
 				if ($update.length -gt 2) {
-					$label2.Text = 'Version: ' + $version
-					$label3.Text = 'Update: ' + $update
-					[System.Windows.Forms.MessageBox]::Show('Version: ' + $version + "`nUpdate:" + $update, 'Setting Updated', 0, 64)
+					$label2.Text = 'Versions: ' + $version
+					$label3.Text = 'Last Version: ' + $lastVersion
+					$label4.Text = 'Update: ' + $update
+					$label5.Text = 'New File Name: ' + $PathDest
+					[System.Windows.Forms.MessageBox]::Show('Last Version: ' + $lastVersion + "`nUpdate:" + $update, 'Setting Updated', 0, 64)
 				}
 				else {
 					$label3.Text = 'Not updated'
