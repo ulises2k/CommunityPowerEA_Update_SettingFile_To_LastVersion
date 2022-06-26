@@ -60,7 +60,6 @@ function MainUpdateVersion ([string]$filePath) {
 
 	$filePath = $filePathNew
 
-
 	#Detect Version 2.18
 	#Pending_Type=1
 	#MinPause_Bars=0
@@ -170,35 +169,34 @@ function MainUpdateVersion ([string]$filePath) {
 			AntiStopLoss_Mode        = "1"
 		}
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			BigCandle_MartinOn       = "0"
-			Oscillators_MartinOn     = "0"
-			Oscillator2_MartinOn     = "0"
-			IdentifyTrend_MartinOn   = "0"
-			TDI_MartinOn             = "0"
-			MACD_MartinOn            = "0"
-			MA_Filter_1_MartinOn     = "0"
-			MA_Filter_2_MartinOn     = "0"
-			MA_Filter_3_MartinOn     = "0"
-			VolFilter_MartinOn       = "0"
-			FIBO_MartinOn            = "0"
+			BigCandle_MartinOn     = "0"
+			Oscillators_MartinOn   = "0"
+			Oscillator2_MartinOn   = "0"
+			IdentifyTrend_MartinOn = "0"
+			TDI_MartinOn           = "0"
+			MACD_MartinOn          = "0"
+			MA_Filter_1_MartinOn   = "0"
+			MA_Filter_2_MartinOn   = "0"
+			MA_Filter_3_MartinOn   = "0"
+			VolFilter_MartinOn     = "0"
+			FIBO_MartinOn          = "0"
 		}
 	}
 
-	#Detect Version 2.21
+	#Detect Version 2.21, 2.22
 	#Setting file: CP_MT5_EURUSD_Grid8_v2.21.set
+	#Setting file: default_v2.22.set
 	#NewDealOnNewBar=false
 	if (Select-String -Path $filePath -Quiet -Pattern "NewDealOnNewBar") {
-		$version = $version + ">=2.21"
-		$lastVersion = "2.21"
+		$version = $version + ">=(2.21,2.22)"
+		$lastVersion = "2.21-2.22"
 	}
 	else {
-		$update = $update + "/2.21"
+		$update = $update + "/(2.21,2.22)"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			NewDealOnNewBar = "true"
 		}
 	}
-	#Detect Version 2.22
-	#I don't have the default set of this version, could you share it with me if you have it? @ulises2k
 
 	#Detect Version 2.23
 	#MaxFloatingLoss=0
@@ -239,7 +237,6 @@ function MainUpdateVersion ([string]$filePath) {
 		}
 	}
 
-
 	#Detect Version 2.24
 	#Setting file: Community EURUSD 2 risk 5% coef 1.32 stop lost 225 bon_v2.24.set
 	#FIB2_Properties====== FIBO #2 =====
@@ -269,7 +266,6 @@ function MainUpdateVersion ([string]$filePath) {
 			FIB2_CloseOn       = "0"
 		}
 	}
-
 
 	#Detect Version 2.25
 	#BigCandle_CloseOn=0
@@ -363,7 +359,6 @@ function MainUpdateVersion ([string]$filePath) {
 			Friday_EndMinute           = "0"
 		}
 	}
-
 
 	#Detect Version 2.26
 	#AutoHedge_Properties========
@@ -845,7 +840,6 @@ function MainUpdateVersion ([string]$filePath) {
 			MessagesToGrammy       = "false"
 			Alerts_Enabled         = "false"
 		}
-
 	}
 
 	#Detect Version 2.32.4
@@ -915,36 +909,44 @@ function MainUpdateVersion ([string]$filePath) {
 	}
 
 	#Detect Version 2.33
-	#I don't have the default set of this version, could you share it with me if you have it? @ulises2k
-
-	#Detect Version 2.34
-	#AutoHedge_MaxOrders=0
-	#GlobalAccountTrailingStop_ccy=0
-	#GlobalAccountTrailingStop_perc=0
+	#AutoHedge_MaxOrders=1
+	#StopLoss_Global========
+	#StopLoss_Pause========
 	#CutomCoefficients=2.2,3.4,4.7
 	#AntiCutomCoefficients=0.95,0.77,0.53
 	#PartialCloseHedge_BothWays=false
 	#PartialCloseHedge_MaxPrOrders=0
-	#PartialCloseHedge_MinProfit=0
-	#PartialCloseHedge_MinProfit_Perc=0
 	#PartialCloseHedge_MinProfit_OppL=0
 	if (Select-String -Path $filePath -Quiet -Pattern "AutoHedge_MaxOrders") {
+		$version = $version + ">=2.33"
+		$lastVersion = "2.33"
+	}
+	else {
+		$update = $update + "/2.33"
+		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
+			AutoHedge_MaxOrders              = "1"
+			StopLoss_Global                  = "===== Summ Stop Loss (buy + sell) ====="
+			StopLoss_Pause                   = "===== Pause after loss ====="
+			CutomCoefficients                = "2.2,3.4,4.7"
+			AntiCutomCoefficients            = "0.95,0.77,0.53"
+			PartialCloseHedge_BothWays       = "false"
+			PartialCloseHedge_MaxPrOrders    = "0"
+			PartialCloseHedge_MinProfit_OppL = "0"
+		}
+	}
+
+	#Detect Version 2.34
+	#GlobalAccountTrailingStop_ccy=0
+	#GlobalAccountTrailingStop_perc=0
+	if (Select-String -Path $filePath -Quiet -Pattern "GlobalAccountTrailingStop_ccy") {
 		$version = $version + ">=2.34"
 		$lastVersion = "2.34"
 	}
 	else {
 		$update = $update + "/2.34"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
-			AutoHedge_MaxOrders              = "1"
 			GlobalAccountTrailingStop_ccy    = "0"
 			GlobalAccountTrailingStop_perc   = "0"
-			CutomCoefficients                = "2.2,3.4,4.7"
-			AntiCutomCoefficients            = "0.95,0.77,0.53"
-			PartialCloseHedge_BothWays       = "false"
-			PartialCloseHedge_MaxPrOrders    = "0"
-			PartialCloseHedge_MinProfit      = "0"
-			PartialCloseHedge_MinProfit_Perc = "0"
-			PartialCloseHedge_MinProfit_OppL = "0"
 		}
 	}
 
