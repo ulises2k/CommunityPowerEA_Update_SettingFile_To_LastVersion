@@ -270,46 +270,46 @@ function MainUpdateVersion ([string]$filePath) {
 
 
 	#Detect Version 2.25
-	#BigCandle_CloseOn=0||0||0||4||N
-	#BigCandle_PartialCloseOn=0||0||0||3||N
-	#Oscillators_PartialCloseOn=0||0||0||3||N
-	#Oscillator2_PartialCloseOn=0||0||0||3||N
-	#IdentifyTrend_PartialCloseOn=0||0||0||3||N
-	#TDI_PartialCloseOn=0||0||0||3||N
-	#MACD_PartialCloseOn=0||0||0||3||N
-	#MA_Filter_1_PartialCloseOn=0||0||0||3||N
-	#MA_Filter_2_PartialCloseOn=0||0||0||3||N
-	#MA_Filter_3_PartialCloseOn=0||0||0||3||N
-	#VolFilter_PartialCloseOn=0||0||0||3||N
-	#FIBO_CheckInterval=1||0||0||10||N
-	#FIBO_PartialCloseOn=0||0||0||3||N
-	#FIB2_CheckInterval=1||0||0||10||N
-	#FIB2_PartialCloseOn=0||0||0||3||N
-	#Time_ApplyTo=1||0||0||3||N
-	#EveryDay_CloseHour=-1||-1||0||23||N
-	#EveryDay_CloseMinute=0||0||0||55||N
+	#BigCandle_CloseOn=0
+	#BigCandle_PartialCloseOn=0
+	#Oscillators_PartialCloseOn=0
+	#Oscillator2_PartialCloseOn=0
+	#IdentifyTrend_PartialCloseOn=0
+	#TDI_PartialCloseOn=0
+	#MACD_PartialCloseOn=0
+	#MA_Filter_1_PartialCloseOn=0
+	#MA_Filter_2_PartialCloseOn=0
+	#MA_Filter_3_PartialCloseOn=0
+	#VolFilter_PartialCloseOn=0
+	#FIBO_CheckInterval=1
+	#FIBO_PartialCloseOn=0
+	#FIB2_CheckInterval=1
+	#FIB2_PartialCloseOn=0
+	#Time_ApplyTo=1
+	#EveryDay_CloseHour=-1
+	#EveryDay_CloseMinute=0
 	#Custom_Schedule_Properties===== Custom Schedule ====
-	#Custom_Schedule_On=false||false||0||true||N
-	#Monday_StartHour=-1||-1||0||23||N
-	#Monday_StartMinute=0||0||0||55||N
-	#Monday_EndHour=-1||-1||0||23||N
-	#Monday_EndMinute=0||0||0||55||N
-	#Tuesday_StartHour=-1||-1||0||23||N
-	#Tuesday_StartMinute=0||0||0||55||N
-	#Tuesday_EndHour=-1||-1||0||23||N
-	#Tuesday_EndMinute=0||0||0||55||N
-	#Wednesday_StartHour=-1||-1||0||23||N
-	#Wednesday_StartMinute=0||0||0||55||N
-	#Wednesday_EndHour=-1||-1||0||23||N
-	#Wednesday_EndMinute=0||0||0||55||N
-	#Thursday_StartHour=-1||-1||0||23||N
-	#Thursday_StartMinute=0||0||0||55||N
-	#Thursday_EndHour=-1||-1||0||23||N
-	#Thursday_EndMinute=0||0||0||55||N
-	#Friday_StartHour=-1||-1||0||23||N
-	#Friday_StartMinute=0||0||0||55||N
-	#Friday_EndHour=-1||-1||0||23||N
-	#Friday_EndMinute=0||0||0||55||N
+	#Custom_Schedule_On=false
+	#Monday_StartHour=-1
+	#Monday_StartMinute=0
+	#Monday_EndHour=-1
+	#Monday_EndMinute=0
+	#Tuesday_StartHour=-1
+	#Tuesday_StartMinute=0
+	#Tuesday_EndHour=-1
+	#Tuesday_EndMinute=0
+	#Wednesday_StartHour=-1
+	#Wednesday_StartMinute=0
+	#Wednesday_EndHour=-1
+	#Wednesday_EndMinute=0
+	#Thursday_StartHour=-1
+	#Thursday_StartMinute=0
+	#Thursday_EndHour=-1
+	#Thursday_EndMinute=0
+	#Friday_StartHour=-1
+	#Friday_StartMinute=0
+	#Friday_EndHour=-1
+	#Friday_EndMinute=0
 	if (Select-String -Path $filePath -Quiet -Pattern "BigCandle_CloseOn") {
 		$version = $version + ">=2.25"
 		$lastVersion = "2.25"
@@ -365,7 +365,7 @@ function MainUpdateVersion ([string]$filePath) {
 
 	#Detect Version 2.26
 	#AutoHedge_Properties========
-	#AutoHedge_AfterOrder=0||0||1||10||N
+	#AutoHedge_AfterOrder=0
 	if (Select-String -Path $filePath -Quiet -Pattern "AutoHedge_AfterOrder") {
 		$version = $version + ">=2.26"
 		$lastVersion = "2.26"
@@ -404,23 +404,23 @@ function MainUpdateVersion ([string]$filePath) {
 	}
 
 	#Detect Version 2.28
-	#UseVirtualTP=false||false||0||true||N
-	#BreakEven_MinProfit=0||0||0.000000||0.000000||N
-	#TDI_Mode=1||0||0||1||N
-	#TDI_SignalLevel=50||50||5.000000||500.000000||N
-	#TDI_PeriodRSI=21||21||1||210||N
-	#TDI_AppliedPriceRSI=1||1||0||7||N
-	#TDI_PeriodSmRSI=2||2||1||20||N
-	#TDI_MethodSmRSI=0||0||0||3||N
-	#TDI_PeriodSmSig=7||7||1||70||N
-	#TDI_MethodSmSig=0||0||0||3||N
-	#TDI_PeriodVolBand=34||34||1||340||N
-	#TDI_StdDev=1.6185||1.6185||0.161850||16.185000||N
+	#UseVirtualTP=false
+	#BreakEven_MinProfit=0
+	#TDI_Mode=1
+	#TDI_SignalLevel=50
+	#TDI_PeriodRSI=21
+	#TDI_AppliedPriceRSI=1
+	#TDI_PeriodSmRSI=2
+	#TDI_MethodSmRSI=0
+	#TDI_PeriodSmSig=7
+	#TDI_MethodSmSig=0
+	#TDI_PeriodVolBand=34
+	#TDI_StdDev=1.6185
 	#ShowOrders_Settings====================================================================================
-	#Show_Opened=1||0||0||3||N
-	#Show_Closed=true||false||0||true||N
-	#Show_Pending=true||false||0||true||N
-	#MaxHistoryDeals=500||500||1||5000||N
+	#Show_Opened=1
+	#Show_Closed=true
+	#Show_Pending=true
+	#MaxHistoryDeals=500
 	#Color_Properties=
 	#Color_B_Open=16748574
 	#Color_B=16748574
@@ -429,22 +429,22 @@ function MainUpdateVersion ([string]$filePath) {
 	#Color_S=17919
 	#Color_S_Loss=12695295
 	#Profit_Properties=
-	#Profit_ShowInMoney=true||false||0||true||N
-	#Profit_ShowInPoints=true||false||0||true||N
-	#Profit_ShowInPercents=false||false||0||true||N
-	#ProfitDigitsToShow=1||1||1||10||N
+	#Profit_ShowInMoney=true
+	#Profit_ShowInPoints=true
+	#Profit_ShowInPercents=false
+	#ProfitDigitsToShow=1
 	#Font=Arial
-	#FontSize=9||9||1||90||N
+	#FontSize=9
 	#Style_Properties=
-	#Open_Close_Line_Width=1||1||1||10||N
-	#Open_Close_Line_Style=2||0||0||4||N
-	#Open_PriceLabel_Width=0||0||1||10||N
-	#Close_PriceLabel_Width=0||0||1||10||N
-	#SL_TP_Dashes_Show=true||false||0||true||N
-	#SL_TP_Lines_Width=0||0||1||10||N
-	#SL_TP_Lines_Style=2||0||0||4||N
-	#Expiration_Width=0||0||1||10||N
-	#Expiration_Style=2||0||0||4||N
+	#Open_Close_Line_Width=1
+	#Open_Close_Line_Style=2
+	#Open_PriceLabel_Width=0
+	#Close_PriceLabel_Width=0
+	#SL_TP_Dashes_Show=true
+	#SL_TP_Lines_Width=0
+	#SL_TP_Lines_Style=2
+	#Expiration_Width=0
+	#Expiration_Style=2
 	#Optimization_Settings====================================================================================
 	#InpEquityRecorderType=1
 	#InpEquityRecorderCorr=0
@@ -517,15 +517,15 @@ function MainUpdateVersion ([string]$filePath) {
 	#Setting file: eurusd_5m_leverage100_roboforex_2_v2.29.3_Beta.set
 	#; News settings
 	#News_Properties================================================================
-	#News_Mode=0||0||0||2||N
+	#News_Mode=0
 	#News_Currencies=auto
-	#News_Impact_H=true||false||0||true||N
-	#News_Impact_M=true||false||0||true||N
-	#News_Impact_L=true||false||0||true||N
-	#News_Impact_N=false||false||0||true||N
+	#News_Impact_H=true
+	#News_Impact_M=true
+	#News_Impact_L=true
+	#News_Impact_N=false
 	#News_FilterInclude=Summit,Speech,Speak,PMI,ECB,BoC,Fed,FED,NFP, payrolls, Payrolls,
-	#News_MinutesBefore=15||30||30||600||Y
-	#News_MinutesAfter=15||30||30||600||Y
+	#News_MinutesBefore=15
+	#News_MinutesAfter=15
 	#News_Draw_Properties===== Visualization ====
 	#News_ShowOnChart=true
 	#News_Style_History=0
@@ -763,7 +763,6 @@ function MainUpdateVersion ([string]$filePath) {
 			GlobalAccountTargetProfit_perc = "0"
 		}
 
-
 		#; TrailingStop properties
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			TrailingStop_ModeP = "0"
@@ -831,7 +830,6 @@ function MainUpdateVersion ([string]$filePath) {
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			AntiStopLoss_ModeP = "0"
 		}
-
 
 		#Only the values that were not added above
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
