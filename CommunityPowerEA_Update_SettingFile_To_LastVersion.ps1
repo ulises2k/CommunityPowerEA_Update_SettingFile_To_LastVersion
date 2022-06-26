@@ -118,6 +118,7 @@ function MainUpdateVersion ([string]$filePath) {
 			GUI_Window_Alpha            = "255"
 		}
 	}
+
 	#Detect Version 2.20
 	#StopLoss_Mode=1
 	#MinProfitToClose_Properties========
@@ -182,6 +183,7 @@ function MainUpdateVersion ([string]$filePath) {
 			FIBO_MartinOn            = "0"
 		}
 	}
+
 	#Detect Version 2.21
 	#Setting file: CP_MT5_EURUSD_Grid8_v2.21.set
 	#NewDealOnNewBar=false
@@ -1491,13 +1493,14 @@ $form.MaximizeBox = $False
 $form.Topmost = $True
 
 ### Define controls ###
+# Button
 $button = New-Object System.Windows.Forms.Button
 $button.Location = '5,5'
 $button.Size = '75,23'
 $button.Width = 120
 $button.Text = "Update Setting File MT5"
 
-### Define controls ###
+# Button
 $button2 = New-Object System.Windows.Forms.Button
 $button2.Location = '5,30'
 $button2.Size = '75,23'
@@ -1505,37 +1508,37 @@ $button2.Width = 120
 $button2.Text = "Clear ListBox"
 
 # Label
-$label2 = New-Object Windows.Forms.Label
+$label2 = New-Object System.Windows.Forms.Label
 $label2.Location = '5,70'
 $label2.AutoSize = $True
 $label2.Text = "Versions:"
 
 # Label
-$label3 = New-Object Windows.Forms.Label
+$label3 = New-Object System.Windows.Forms.Label
 $label3.Location = '5,85'
 $label3.AutoSize = $True
 $label3.Text = "Last Version Detected:"
 
 # Label
-$label4 = New-Object Windows.Forms.Label
+$label4 = New-Object System.Windows.Forms.Label
 $label4.Location = '5,100'
 $label4.AutoSize = $True
 $label4.Text = "Update:"
 
 # Label
-$label5 = New-Object Windows.Forms.Label
+$label5 = New-Object System.Windows.Forms.Label
 $label5.Location = '5,115'
 $label5.AutoSize = $True
 $label5.Text = "New File Name:"
 
 # Label
-$label = New-Object Windows.Forms.Label
+$label = New-Object System.Windows.Forms.Label
 $label.Location = '5,160'
 $label.AutoSize = $True
 $label.Text = "Drag and Drop MT5 files settings here:"
 
 # Listbox
-$listBox = New-Object Windows.Forms.ListBox
+$listBox = New-Object System.Windows.Forms.ListBox
 $listBox.Location = '5,180'
 $listBox.Height = 80
 $listBox.Width = 760
@@ -1563,6 +1566,7 @@ $form.ResumeLayout()
 ### Write event handlers ###
 $button_Click = {
 	foreach ($item in $listBox.Items) {
+		$i = Get-Item -LiteralPath $item
 		if (!($i -is [System.IO.DirectoryInfo])) {
 			$version, $lastVersion, $update, $PathDest = MainUpdateVersion -file $item
 			if ($version.length -gt 2) {
@@ -1610,24 +1614,11 @@ $listBox_DragDrop = [System.Windows.Forms.DragEventHandler] {
 	$statusBar.Text = ("List contains $($listBox.Items.Count) items")
 }
 
-$form_FormClosed = {
-	try {
-		$button.remove_Click($button_Click)
-		$button2.remove_Click($button2_Click)
-		$listBox.remove_DragOver($listBox_DragOver)
-		$listBox.remove_DragDrop($listBox_DragDrop)
-		$form.remove_FormClosed($Form_Cleanup_FormClosed)
-	}
-	catch [Exception]
-	{ }
-}
-
 ### Wire up events ###
 $button.Add_Click($button_Click)
 $button2.Add_Click($button2_Click)
 $listBox.Add_DragOver($listBox_DragOver)
 $listBox.Add_DragDrop($listBox_DragDrop)
-$form.Add_FormClosed($form_FormClosed)
 
 #### Show form ###
 [void] $form.ShowDialog()
