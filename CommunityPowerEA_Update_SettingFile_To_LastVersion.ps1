@@ -563,54 +563,54 @@ function MainUpdateVersion ([string]$filePath) {
 	}
 
 	#Detect Version 2.30
-	#MinStepSize=0||0||0.000000||0.000000||N
-	#AntiMinStepSize=0||0||0.000000||0.000000||N
+	#MinStepSize=0
+	#AntiMinStepSize=0
 	#; Oscillator #3 properties
 	#Oscillator3_Properties====================================================================================
-	#Oscillator3_Type=0||0||0||4||N
-	#Oscillator3_Indicator=2||0||0||4||N
-	#Oscillator3_TF=16408||0||0||49153||N
-	#Oscillator3_Period=14||14||1||140||N
-	#Oscillator3_Price=1||1||0||7||N
-	#Oscillator3_MA_Period=3||3||1||30||N
-	#Oscillator3_MA_Method=0||0||0||3||N
-	#Oscillator3_Slowing=3||3||1||30||N
-	#Oscillator3_STO_Price=0||0||0||1||N
-	#Oscillator3_Level_UP_Min=80||80||8.000000||800.000000||N
-	#Oscillator3_Level_DN_Min=-999||-999||-99.900000||-9990.000000||N
-	#Oscillator3_ContrTrend=false||false||0||true||N
-	#Oscillator3_OpenOn=0||0||0||3||N
-	#Oscillator3_MartinOn=0||0||0||3||N
-	#Oscillator3_CloseOn=0||0||0||4||N
-	#Oscillator3_PartialCloseOn=0||0||0||3||N
+	#Oscillator3_Type=0
+	#Oscillator3_Indicator=2
+	#Oscillator3_TF=16408
+	#Oscillator3_Period=14
+	#Oscillator3_Price=1
+	#Oscillator3_MA_Period=3
+	#Oscillator3_MA_Method=0
+	#Oscillator3_Slowing=3
+	#Oscillator3_STO_Price=0
+	#Oscillator3_Level_UP_Min=80
+	#Oscillator3_Level_DN_Min=-999
+	#Oscillator3_ContrTrend=false
+	#Oscillator3_OpenOn=0
+	#Oscillator3_MartinOn=0
+	#Oscillator3_CloseOn=0
+	#Oscillator3_PartialCloseOn=0
 	#; Parabolic SAR properties
 	#PSar_Properties====================================================================================
-	#PSar_Type=0||0||0||2||N
-	#PSar_TF=0||0||0||49153||N
-	#PSar_Step=0.02||0.02||0.002000||0.200000||N
-	#PSar_Maximum=0.2||0.2||0.020000||2.000000||N
-	#PSar_Reverse=false||false||0||true||N
-	#PSar_OpenOn=0||0||0||3||N
-	#PSar_MartinOn=0||0||0||3||N
-	#PSar_CloseOn=0||0||0||4||N
-	#PSar_PartialCloseOn=0||0||0||3||N
+	#PSar_Type=0
+	#PSar_TF=0
+	#PSar_Step=0.02
+	#PSar_Maximum=0.2
+	#PSar_Reverse=false
+	#PSar_OpenOn=0
+	#PSar_MartinOn=0
+	#PSar_CloseOn=0
+	#PSar_PartialCloseOn=0
 	#; ZZ properties
 	#ZZ_Properties====================================================================================
-	#ZZ_Type=0||0||0||4||N
-	#ZZ_TF=0||0||0||49153||N
-	#ZZ_Period=12||12||1||120||N
-	#ZZ_MinAmplitude=10||10||1||100||N
-	#ZZ_MinMotion=0||0||1||10||N
-	#ZZ_DistanceType=0||0||0||2||N
-	#ZZ_SignalDistCoeff=0||0||0.000000||0.000000||N
-	#ZZ_Reverse=false||false||0||true||N
-	#ZZ_UseClosedBars=false||false||0||true||N
-	#ZZ_OpenOn=0||0||0||3||N
-	#ZZ_MartinOn=0||0||0||3||N
-	#ZZ_CloseOn=0||0||0||4||N
-	#ZZ_PartialCloseOn=0||0||0||3||N
+	#ZZ_Type=0
+	#ZZ_TF=0
+	#ZZ_Period=12
+	#ZZ_MinAmplitude=10
+	#ZZ_MinMotion=0
+	#ZZ_DistanceType=0
+	#ZZ_SignalDistCoeff=0
+	#ZZ_Reverse=false
+	#ZZ_UseClosedBars=false
+	#ZZ_OpenOn=0
+	#ZZ_MartinOn=0
+	#ZZ_CloseOn=0
+	#ZZ_PartialCloseOn=0
 	#; Volatility for MA and ZZ Filters distance
-	#Profit_Aggregate=true||false||0||true||N
+	#Profit_Aggregate=true
 	if (Select-String -Path $filePath -Quiet -Pattern "MinStepSize") {
 		$version = $version + ">=2.30"
 		$lastVersion = "2.30"
