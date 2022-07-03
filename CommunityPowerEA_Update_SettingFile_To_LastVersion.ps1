@@ -1333,7 +1333,7 @@ function MainUpdateVersion ([string]$filePath) {
 		}
 	}
 
-	#Detect Version 2.48
+	#Detect Version 2.48.2
 	#GlobalAccountStopLoss_ccy=0
 	#GlobalAccountStopLoss_perc=0
 	#DL_Properties====== Daily limits =====
@@ -1358,11 +1358,11 @@ function MainUpdateVersion ([string]$filePath) {
 	#CL_DayStartHour=0
 	#CL_CloseOnProfitAndDD=true
 	if (Select-String -Path $filePath -Quiet -Pattern "GlobalAccountStopLoss_ccy") {
-		$version = $version + ">=2.48"
-		$lastVersion = "2.48"
+		$version = $version + ">=2.48.2(Beta)"
+		$lastVersion = "2.48.2(Beta)"
 	}
 	else {
-		$update = $update + "/2.48"
+		$update = $update + "/2.48.2(Beta)"
 		Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 			GlobalAccountStopLoss_ccy  = "0"
 			GlobalAccountStopLoss_perc = "0"
@@ -1398,7 +1398,19 @@ function MainUpdateVersion ([string]$filePath) {
 		}
 	}
 
-	#Set Properties v2.48.2
+
+	#Detect Version 2.48 (Public Release)
+	#SetDescription=
+	if (Select-String -Path $filePath -Quiet -Pattern "SetDescription") {
+		$version = $version + ">=2.48"
+		$lastVersion = "2.48"
+	}
+	else {
+		$update = $update + "/2.48"
+	}
+
+
+	#Set Properties v2.48
 	Set-OrAddIniValue -FilePath $filePath  -keyValueList @{
 		BinanceTradeConnector_Settings = "===== BinanceTradeConnector settings ====="
 		Expert_Properties              = "===== Expert ====="
